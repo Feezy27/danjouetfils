@@ -159,7 +159,7 @@ nav{
 
 .hero-stats{
   position:absolute;bottom:0;left:0;right:0;z-index:2;
-  display:grid;grid-template-columns:repeat(4,1fr);
+  display:grid;grid-template-columns:repeat(5,1fr);
   background:rgba(0,0,0,.45);backdrop-filter:blur(8px);
   border-top:1px solid var(--line)
 }
@@ -176,6 +176,10 @@ nav{
   font-family:var(--H);font-size:.68rem;font-weight:600;
   letter-spacing:.18em;text-transform:uppercase;
   color:rgba(255,255,255,.5);margin-top:.2rem
+}
+.google-stars{
+  font-size:1.1rem;color:#FFB800;letter-spacing:.1em;
+  line-height:1;margin-bottom:.1rem
 }
 
 /* ─── SECTIONS COMMUNES ─── */
@@ -260,6 +264,15 @@ nav{
   font-family:var(--H);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue)
 }
 .about-strip-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.6) saturate(.8)}
+.google-rating-badge{
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin-top:.8rem;
+  font-family:var(--H);font-size:.85rem;font-weight:600;
+  letter-spacing:.06em;color:rgba(255,255,255,.8)
+}
+.grb-stars{color:#FFB800;font-size:1rem;letter-spacing:.05em}
+.grb-score{color:var(--white);font-size:1rem;font-weight:700}
+.grb-count{color:rgba(255,255,255,.5);font-size:.8rem;font-weight:400}
 .qualifelec-badge{
   display:inline-flex;align-items:center;gap:.8rem;
   background:var(--orange);color:var(--white);
@@ -541,6 +554,11 @@ footer{
       <div class="hstat"><div class="hstat-n">QL</div><div class="hstat-l">Qualifelec certifié</div></div>
       <div class="hstat"><div class="hstat-n">76</div><div class="hstat-l">Seine-Maritime</div></div>
       <div class="hstat"><div class="hstat-n">0€</div><div class="hstat-l">Devis gratuit</div></div>
+      <div class="hstat">
+        <div class="google-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="hstat-n" style="font-size:1.5rem;margin-top:.2rem">4,9<span style="font-size:.85rem;color:var(--muted);font-weight:400">/5</span></div>
+        <div class="hstat-l">13 avis Google</div>
+      </div>
     </div>
   </section>
 
@@ -601,6 +619,11 @@ footer{
       <div class="qualifelec-badge">
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         Certifié Qualifelec — Logement & Petit tertiaire
+      </div>
+      <div class="google-rating-badge">
+        <span class="grb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="grb-score">4,9/5</span>
+        <span class="grb-count">— 13 avis Google</span>
       </div>
     </div>
     <div class="about-strip-photo">
