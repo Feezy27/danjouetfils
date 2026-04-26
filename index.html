@@ -537,13 +537,16 @@ footer{
     width:100%
   }
   .hero-tag{
-    font-size:.68rem;margin-bottom:1.2rem;
+    font-size:.65rem;
+    margin-bottom:1.2rem;
     text-align:center;
     display:block;
-    letter-spacing:.12em;
-    white-space:nowrap
+    letter-spacing:.14em;
+    white-space:normal;
+    line-height:1.8
   }
   .hero-tag::before,.hero-tag::after{display:none}
+  .hero-tag-br::before{content:'\A';white-space:pre}
   .hero-content h1{font-size:clamp(2.8rem,12vw,4.5rem)}
   .hero-content p{font-size:.88rem;margin-bottom:1.5rem}
   .hero-btns{
@@ -610,7 +613,7 @@ footer{
     </div>
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-tag">Gainneville — Seine-Maritime<span class="hero-tag-br"> — </span><span style="white-space:nowrap">Depuis 2000</span></div>
+      <div class="hero-tag"><span style="white-space:nowrap">Gainneville — Seine-Maritime</span><span class="hero-tag-br"> — </span><span style="white-space:nowrap">Depuis 2000</span></div>
       <h1>Votre électricien<br><span>de confiance</span></h1>
       <p>Particuliers, entreprises et industries — installation, rénovation et dépannage électrique sur Le Havre et ses environs depuis plus de 25 ans.</p>
       <div class="hero-btns">
