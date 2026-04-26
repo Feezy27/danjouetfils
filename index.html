@@ -588,7 +588,7 @@ footer{
     <a class="nav-link" href="#" onclick="show('services',this)">Électricité générale</a>
     <a class="nav-link" href="#" onclick="show('industriel',this)">Bâtiment industriel & tertiaire</a>
     <a class="nav-link" href="#" onclick="show('contact',this)">Contact</a>
-    <button class="nav-cta" onclick="show('contact',null)">Devis gratuit</button>
+    <button class="nav-cta" onclick="showAndScroll('contact','contact-form')">Devis gratuit</button>
   </div>
 </nav>
 
@@ -607,7 +607,7 @@ footer{
       <h1>Votre électricien<br><span>de confiance</span></h1>
       <p>Particuliers, entreprises et industries — installation, rénovation et dépannage électrique sur Le Havre et ses environs depuis plus de 25 ans.</p>
       <div class="hero-btns">
-        <a class="hbp" href="#" onclick="show('contact',null)">Devis gratuit</a>
+        <a class="hbp" href="#" onclick="showAndScroll('contact','contact-form')">Devis gratuit</a>
         <a class="hbg" href="#" onclick="show('services',null)">Nos services</a>
       </div>
     </div>
@@ -719,7 +719,7 @@ footer{
       <h3>Un projet ? Parlons-en.</h3>
       <p>Devis gratuit et sans engagement — réponse rapide garantie</p>
     </div>
-    <button class="cta-band-btn" onclick="show('contact',null)">Demander un devis</button>
+    <button class="cta-band-btn" onclick="showAndScroll('contact','contact-form')">Demander un devis</button>
   </div>
 
 </div>
@@ -787,7 +787,7 @@ footer{
       <h3>Besoin d'un devis ?</h3>
       <p>Gratuit et sans engagement — nous répondons rapidement</p>
     </div>
-    <button class="cta-band-btn" onclick="show('contact',null)">Nous contacter</button>
+    <button class="cta-band-btn" onclick="showAndScroll('contact','contact-form')">Nous contacter</button>
   </div>
 </div>
 
@@ -844,7 +844,7 @@ footer{
       <h3>Un projet professionnel ?</h3>
       <p>Devis gratuit et adapté à vos contraintes techniques</p>
     </div>
-    <button class="cta-band-btn" onclick="show('contact',null)">Demander un devis</button>
+    <button class="cta-band-btn" onclick="showAndScroll('contact','contact-form')">Demander un devis</button>
   </div>
 </div>
 
@@ -873,7 +873,7 @@ footer{
           </div>
         </div>
       </div>
-      <form class="ct-form rv d2" onsubmit="handleForm(event)">
+      <form id="contact-form" class="ct-form rv d2" onsubmit="handleForm(event)">
         <div class="frow">
           <div class="fld"><label>Prénom & Nom</label><input type="text" placeholder="Jean Dupont" required/></div>
           <div class="fld"><label>Téléphone</label><input type="tel" placeholder="06 xx xx xx xx"/></div>
@@ -947,6 +947,17 @@ window.addEventListener('resize',()=>{
   if(window.innerWidth<=680) burger.style.display='flex';
   else{ burger.style.display='none'; document.querySelector('.nav-bottom').classList.remove('open'); }
 });
+
+function showAndScroll(id, targetId){
+  show(id, null);
+  setTimeout(()=>{
+    const el=document.getElementById(targetId);
+    if(el){
+      const offset=el.getBoundingClientRect().top+window.scrollY-100;
+      window.scrollTo({top:offset,behavior:'smooth'});
+    }
+  },120);
+}
 
 function show(id, linkEl){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
