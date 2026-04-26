@@ -498,13 +498,35 @@ footer{
   .indus-grid{grid-template-columns:1fr}
 }
 @media(max-width:680px){
-  .nav-bottom{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .svc-grid{grid-template-columns:1fr}
+  /* NAV */
+  .nav-top{padding:0 4%;height:56px}
+  .nlogo{font-size:1.2rem}
+  .nlogo-badge{font-size:.6rem;padding:.2rem .4rem}
+  .nav-phone{font-size:.85rem;white-space:nowrap}
+  .nav-bottom{display:none;flex-direction:column;gap:0;padding:0;height:auto;position:absolute;top:100%;left:0;right:0;background:var(--blue2);border-top:1px solid rgba(255,255,255,.1)}
+  .nav-bottom.open{display:flex}
+  .nav-link{height:48px;padding:0 5%;border-bottom:1px solid rgba(255,255,255,.07);border-bottom-width:1px;border-left:3px solid transparent}
+  .nav-link.active{border-left-color:var(--orange);border-bottom-color:transparent}
+  .nav-cta{margin:1rem 5%;width:calc(100% - 10%);text-align:center;padding:.85rem}
+  .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;margin-left:.5rem}
+  .burger span{display:block;width:22px;height:2px;background:var(--white);transition:all .3s}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* HERO */
   .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-content{padding:0 5%}
+  .hero-btns{flex-direction:column;align-items:center;gap:.8rem}
+  .hbp,.hbg{width:100%;max-width:280px;text-align:center;padding:.9rem 1rem}
+
+  /* MISC */
+  .svc-grid{grid-template-columns:1fr}
   .cta-band{flex-direction:column;text-align:center}
   .footer-grid{grid-template-columns:1fr}
   .frow{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
+  .section{padding:3.5rem 5%}
 }
 </style>
 </head>
@@ -518,10 +540,15 @@ footer{
       Danjou <span style="color:var(--orange);margin:0 .1em">&</span> Fils
       <span style="font-size:.7rem;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.08em">SARL</span>
     </div>
-    <a href="tel:0235454326" class="nav-phone">
-      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.62-.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
-      02 35 45 43 26
-    </a>
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <a href="tel:0235454326" class="nav-phone">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.62-.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
+        02 35 45 43 26
+      </a>
+      <div class="burger" id="burger" onclick="toggleMenu()" style="display:none">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
   </div>
   <div class="nav-bottom">
     <a class="nav-link active" href="#" onclick="show('accueil',this)">Accueil</a>
@@ -872,11 +899,30 @@ footer{
 </footer>
 
 <script>
+function toggleMenu(){
+  const burger=document.getElementById('burger');
+  const navBottom=document.querySelector('.nav-bottom');
+  burger.classList.toggle('open');
+  navBottom.classList.toggle('open');
+}
+// Afficher le burger sur mobile
+if(window.innerWidth<=680){
+  document.getElementById('burger').style.display='flex';
+}
+window.addEventListener('resize',()=>{
+  const burger=document.getElementById('burger');
+  if(window.innerWidth<=680) burger.style.display='flex';
+  else{ burger.style.display='none'; document.querySelector('.nav-bottom').classList.remove('open'); }
+});
+
 function show(id, linkEl){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
   if(linkEl) linkEl.classList.add('active');
+  // fermer menu mobile
+  document.querySelector('.nav-bottom').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
   window.scrollTo({top:0,behavior:'smooth'});
   setTimeout(()=>{
     document.querySelectorAll('#'+id+' .rv').forEach(el=>el.classList.add('on'));
