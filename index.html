@@ -505,11 +505,9 @@ footer{
   .nav-top{padding:0 3%;height:56px}
   .nlogo{font-size:1rem;gap:.4rem;letter-spacing:.02em}
   .nlogo-badge{font-size:.55rem;padding:.15rem .35rem}
-  /* SARL passe en dessous de Danjou & Fils */
   .nlogo .sarl-tag{display:block;font-size:.6rem;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.08em;line-height:1;margin-top:-2px}
   .nav-phone{font-size:.8rem;white-space:nowrap;gap:.3rem}
   .nav-phone svg{width:13px;height:13px}
-  /* Bandeau nav-bottom masqué par défaut, hamburger visible */
   .nav-bottom{display:none;flex-direction:column;gap:0;padding:0;height:auto;position:absolute;top:100%;left:0;right:0;background:var(--blue2);border-top:1px solid rgba(255,255,255,.1);z-index:300}
   .nav-bottom.open{display:flex}
   .nav-link{height:48px;padding:0 5%;border-bottom:1px solid rgba(255,255,255,.07);border-left:3px solid transparent}
@@ -521,15 +519,40 @@ footer{
   .burger.open span:nth-child(2){opacity:0}
   .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-  /* PAGE — padding-top = hauteur nav-top seule (56px) */
+  /* PAGE */
   .page{padding-top:56px}
 
-  /* HERO — hauteur ajustée + espace pour les boutons */
-  #hero-section{height:auto;min-height:0;padding:3rem 0 0}
-  .hero-content{padding:0 5%;margin-bottom:1.5rem}
-  .hero-btns{flex-direction:column;align-items:center;gap:.8rem;margin-bottom:1.5rem}
-  .hbp,.hbg{width:100%;max-width:300px;text-align:center;padding:.9rem 1rem}
-  .hero-stats{position:relative;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+  /* HERO — structure flex colonne sur mobile */
+  #hero-section{
+    height:auto;min-height:0;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:stretch
+  }
+  .hero-bg{position:absolute}
+  .hero-content{
+    padding:2.5rem 5% 2rem;
+    text-align:left;
+    margin-bottom:0;
+    width:100%
+  }
+  .hero-tag{font-size:.7rem;margin-bottom:1.2rem}
+  .hero-content h1{font-size:clamp(2.8rem,12vw,4.5rem)}
+  .hero-content p{font-size:.88rem;margin-bottom:1.5rem}
+  .hero-btns{
+    flex-direction:column;align-items:flex-start;gap:.8rem;margin-bottom:0
+  }
+  .hbp,.hbg{width:100%;text-align:center;padding:.85rem 1rem}
+
+  /* STATS — sortir du position:absolute, redevenir bloc normal */
+  .hero-stats{
+    position:relative;
+    grid-template-columns:1fr 1fr;
+    bottom:auto;left:auto;right:auto
+  }
+  .hstat{padding:.9rem 1rem}
+  .hstat-n{font-size:1.5rem}
+  .hstat-l{font-size:.6rem;letter-spacing:.12em}
 
   /* MISC */
   .svc-grid{grid-template-columns:1fr}
