@@ -61,12 +61,12 @@ nav{
 }
 .nav-phone{
   display:flex;align-items:center;gap:.6rem;
-  font-family:var(--H);font-weight:700;font-size:1.1rem;
+  font-family:var(--H);font-weight:700;font-size:1.4rem;
   letter-spacing:.04em;color:var(--white);text-decoration:none;
   transition:color .2s
 }
 .nav-phone:hover{color:var(--orange2)}
-.nav-phone svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.nav-phone svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
 
 .nav-bottom{
   display:flex;align-items:center;gap:0;
@@ -106,7 +106,7 @@ nav{
 /* bandeau des menus en blanc (ordinateur et tablette) ; sur mobile le menu déroulant reste bleu */
 @media(min-width:681px){
   .nav-bottom{background:#fff}
-  .nav-link{color:rgba(30,51,112,.7)}
+  .nav-link{color:var(--blue3)}
   .nav-link:hover{color:var(--blue3);border-bottom-color:rgba(30,51,112,.35)}
   .nav-link.active{color:var(--blue3);border-bottom-color:var(--orange)}
   .nav-cta{display:none}
@@ -548,8 +548,8 @@ footer{
   .nlogo{font-size:1rem;gap:.4rem;letter-spacing:.02em}
   .nlogo-badge{font-size:.55rem;padding:.15rem .35rem}
   .nlogo .sarl-tag{display:block;font-size:.6rem;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.08em;line-height:1;margin-top:-2px}
-  .nav-phone{font-size:.8rem;white-space:nowrap;gap:.3rem}
-  .nav-phone svg{width:13px;height:13px}
+  .nav-phone{font-size:1rem;white-space:nowrap;gap:.3rem}
+  .nav-phone svg{width:15px;height:15px}
   .nav-bottom{display:none;flex-direction:column;gap:0;padding:0;height:auto;position:absolute;top:100%;left:0;right:0;background:var(--blue2);border-top:1px solid rgba(255,255,255,.1);z-index:300}
   .nav-bottom.open{display:flex}
   .nav-link{height:48px;padding:0 5%;border-bottom:1px solid rgba(255,255,255,.07);border-left:3px solid transparent}
@@ -625,7 +625,7 @@ footer{
       <div class="hero-content">
         <div class="hero-tag"><span style="white-space:nowrap">Gainneville — Seine-Maritime</span><span class="hero-tag-br"> — </span><span style="white-space:nowrap">Depuis 2000</span></div>
         <h1>Votre électricien<br><span>de confiance</span></h1>
-        <p>Particuliers, entreprises et industries — installation, rénovation et dépannage électrique sur Le Havre et ses environs depuis plus de 25 ans.</p>
+        <p>Particuliers, entreprises et industries — installation, rénovation et dépannage électrique sur Le Havre et ses environs depuis plus de <span class="yrs5">25</span> ans.</p>
         <div class="hero-btns">
           <a class="hbp" href="#" onclick="showAndScroll('contact','contact-form')">Devis gratuit</a>
           <a class="hbg" href="#" onclick="show('services',null)">Nos services</a>
@@ -643,7 +643,6 @@ footer{
   <!-- SERVICES APERÇU -->
   <section class="section section-dark">
     <div class="rv">
-      <div class="s-label">Ce que nous faisons</div>
       <div class="s-title">Nos services</div>
       <p class="s-sub">De l'installation complète au dépannage d'urgence, nous couvrons l'ensemble de vos besoins en électricité.</p>
     </div>
@@ -690,18 +689,12 @@ footer{
   <!-- ABOUT STRIP -->
   <div class="about-strip" id="apropos">
     <div class="about-strip-text section-blue2 rv">
-      <div class="s-label">L'entreprise</div>
-      <div class="s-title">Plus de 25 ans à votre service</div>
-      <p>Implantée à Gainneville en Seine-Maritime, la SARL Danjou et Fils conçoit, installe et répare vos systèmes électriques depuis plus de 25 ans — en neuf comme en rénovation, pour particuliers et professionnels.</p>
+      <div class="s-title">Plus de <span class="yrs5">25</span> ans à votre service</div>
+      <p>Implantée à Gainneville en Seine-Maritime, la SARL Danjou et Fils conçoit, installe et répare vos systèmes électriques depuis plus de <span class="yrs5">25</span> ans — en neuf comme en rénovation, pour particuliers et professionnels.</p>
       <p>Notre équipe intervient sur Le Havre et l'ensemble de la Seine-Maritime, dans le strict respect des normes en vigueur.</p>
       <div class="qualifelec-badge">
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         Certifié Qualifelec — Logement & Petit tertiaire
-      </div>
-      <div class="google-rating-badge">
-        <span class="grb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span class="grb-score">4,9/5</span>
-        <span class="grb-count">— 13 avis Google</span>
       </div>
     </div>
     <div class="about-strip-photo">
@@ -713,7 +706,6 @@ footer{
   <!-- GALLERY -->
   <section class="section section-dark">
     <div class="rv">
-      <div class="s-label">Nos chantiers</div>
       <div class="s-title">Réalisations</div>
     </div>
     <div class="gallery-grid">
@@ -746,7 +738,6 @@ footer{
   <section class="section section-dark">
     <div class="services-intro rv">
       <div>
-        <div class="s-label">Électricité générale</div>
         <div class="s-title">Installation,<br>rénovation<br>& dépannage</div>
       </div>
       <p>Fiabilité, qualité et sécurité. De l'installation complète à l'entretien et la réparation, Danjou & Fils répond à tous vos besoins électriques depuis Gainneville jusqu'au Havre et ses environs.</p>
@@ -811,14 +802,12 @@ footer{
 <div id="industriel" class="page">
 
   <div class="indus-hero rv">
-    <div class="s-label">Professionnel & industrie</div>
     <h2>Bâtiment<br>industriel<br>& tertiaire</h2>
     <p>Danjou & Fils intervient sur tous types de bâtiments professionnels — de l'armoire électrique aux courants faibles, en neuf comme en rénovation.</p>
   </div>
 
   <section class="section section-dark">
     <div class="rv">
-      <div class="s-label">Nos domaines d'intervention</div>
       <div class="s-title" style="margin-bottom:3rem">Ce que<br>nous réalisons</div>
     </div>
     <div class="indus-grid">
@@ -868,7 +857,6 @@ footer{
 <div id="contact" class="page">
   <section class="section section-dark">
     <div class="rv">
-      <div class="s-label">Nous joindre</div>
       <div class="s-title" style="margin-bottom:3rem">Demandez<br>votre devis</div>
     </div>
     <div class="contact-grid">
@@ -938,7 +926,7 @@ footer{
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 SARL Danjou et Fils — L'énergie est notre avenir, économisons-la.</p>
+    <p>© <span class="yr-now">2025</span> SARL Danjou et Fils — L'énergie est notre avenir, économisons-la.</p>
     <div class="footer-bottom-links">
       <a href="#">Mentions légales</a>
       <a href="#">Vie privée</a>
@@ -974,6 +962,13 @@ function showAndScroll(id, targetId){
     }
   },120);
 }
+
+// « plus de X ans » : X monte de 5 en 5 (25 jusqu'en 2029, 30 en 2030, 35 en 2035…), calculé depuis 2000
+(function(){
+  var n=Math.floor((new Date().getFullYear()-2000)/5)*5;
+  document.querySelectorAll('.yrs5').forEach(function(e){e.textContent=n});
+  document.querySelectorAll('.yr-now').forEach(function(e){e.textContent=new Date().getFullYear()});
+})();
 
 function goAbout(el){
   showAndScroll('accueil','apropos');
