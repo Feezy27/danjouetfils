@@ -223,7 +223,26 @@ nav{
   max-width:520px;margin-bottom:3rem
 }
 
-/* ─── SERVICES (accueil) ─── */
+/* ─── SERVICES (accueil) : version claire et chaleureuse ─── */
+.section-warm{background:#F6F2EB}
+.section-warm .svc-head{text-align:center;margin:0 auto 3rem;max-width:640px}
+.section-warm .s-title{color:var(--blue3);line-height:1;margin-bottom:0}
+.section-warm .s-title::after{content:'';display:block;width:56px;height:4px;border-radius:2px;background:var(--orange);margin:1.1rem auto 1.3rem}
+.section-warm .s-sub{color:#4A4F5C;font-size:1.05rem;font-weight:400;margin:0 auto;max-width:560px}
+.section-warm .svc-grid{gap:1.4rem;background:none;margin-top:0;max-width:1180px;margin-left:auto;margin-right:auto}
+.section-warm .svc{background:#fff;border-radius:14px;border-top:0;padding:2rem 1.8rem;box-shadow:0 2px 14px rgba(30,51,112,.08);transition:transform .25s,box-shadow .25s}
+.section-warm .svc::after{display:none}
+.section-warm .svc:hover{background:#fff;transform:translateY(-4px);box-shadow:0 12px 28px rgba(30,51,112,.16)}
+.section-warm .svc-icon{width:56px;height:56px;border:0;border-radius:50%;background:rgba(232,71,28,.1);margin-bottom:1.3rem}
+.section-warm .svc-icon svg{width:26px;height:26px;stroke-width:1.7}
+.section-warm .svc-n{display:none}
+.section-warm .svc-name{color:var(--blue3);font-size:1.5rem;margin-bottom:.8rem}
+.section-warm .svc-desc{color:#4A4F5C;font-size:.96rem;font-weight:400;line-height:1.65}
+.svc-cta{text-align:center;margin-top:2.8rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.svc-cta .hbp{display:inline-block}
+.svc-tel{font-family:'Nunito',var(--B);font-weight:700;font-size:1.05rem;color:var(--blue3);text-decoration:none}
+.svc-tel:hover{color:var(--orange)}
+
 .svc-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:1px;background:rgba(255,255,255,.05);
@@ -567,7 +586,7 @@ footer{
   /* HERO mobile : ajustements propres au téléphone */
   .hero-content{padding:0 5% 2rem;margin-top:-1.2rem}
   .hero-tag{font-size:.63rem;letter-spacing:.08em}
-  .hero-content h1{font-size:clamp(2.8rem,12vw,4.5rem)}
+  .hero-content h1{font-size:clamp(1.9rem,9.6vw,4rem)}
   .hero-content p{font-size:.88rem;margin:0 auto 1.5rem}
   .hero-btns{flex-direction:column;align-items:center;gap:.8rem;margin-bottom:0}
   .hbp,.hbg,.hero-btns .hbp,.hero-btns .hbg{width:100%;text-align:center;padding:.85rem 1rem}
@@ -641,8 +660,8 @@ footer{
   </section>
 
   <!-- SERVICES APERÇU -->
-  <section class="section section-dark">
-    <div class="rv">
+  <section class="section section-warm">
+    <div class="rv svc-head">
       <div class="s-title">Nos services</div>
       <p class="s-sub">De l'installation complète au dépannage d'urgence, nous couvrons l'ensemble de vos besoins en électricité.</p>
     </div>
@@ -683,6 +702,10 @@ footer{
         <div class="svc-name">Dépannage</div>
         <div class="svc-desc">Intervention rapide sur pannes, disjonctions et câblages défectueux.</div>
       </div>
+    </div>
+    <div class="svc-cta rv">
+      <a class="hbp" href="#" onclick="showAndScroll('contact','contact-form');return false">Demander un devis gratuit</a>
+      <a class="svc-tel" href="tel:0235454326">ou appelez-nous au 02 35 45 43 26</a>
     </div>
   </section>
 
