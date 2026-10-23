@@ -70,13 +70,13 @@ nav{
 
 .nav-bottom{
   display:flex;align-items:center;gap:0;
-  padding:0 4%;height:44px
+  padding:0 4%;height:50px
 }
 .nav-link{
-  font-family:var(--H);font-size:.85rem;font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;
+  font-family:'Nunito',var(--B);font-size:1.02rem;font-weight:700;
+  letter-spacing:.01em;
   color:rgba(255,255,255,.75);text-decoration:none;
-  padding:0 1.4rem;height:44px;
+  padding:0 1.5rem;height:50px;
   display:flex;align-items:center;
   border-bottom:3px solid transparent;
   transition:all .2s;white-space:nowrap
@@ -93,8 +93,10 @@ nav{
   transition:background .2s;white-space:nowrap
 }
 .nav-cta:hover{background:var(--orange2)}
+.nav-top{position:relative}
 .nav-tag{
-  flex:1;text-align:center;padding:0 1rem;
+  position:absolute;left:50%;top:0;height:100%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:.55em;white-space:nowrap;pointer-events:none;
   font-family:var(--H);font-size:.88rem;font-weight:600;
   letter-spacing:.16em;text-transform:uppercase;
   color:rgba(255,255,255,.8)
@@ -111,7 +113,7 @@ nav{
 }
 
 /* ─── PAGES ─── */
-.page{display:none;padding-top:96px;min-height:100vh}
+.page{display:none;padding-top:102px;min-height:100vh}
 .page.active{display:block}
 
 /* ─── HERO ─── */
@@ -122,7 +124,7 @@ nav{
 }
 .hero-main{
   position:relative;
-  aspect-ratio:2101/746;
+  aspect-ratio:2097/742;
   container-type:inline-size;
   overflow:hidden
 }
@@ -135,11 +137,11 @@ nav{
 }
 /* textes posés sur le ruban blanc de la photo (desktop) */
 .hero-services{position:absolute;inset:0;z-index:2;pointer-events:none}
-.hsv{position:absolute;top:87.8%;transform:translateY(-50%);display:block}
-.hsv:nth-child(1){left:8.9%}
-.hsv:nth-child(2){left:24.4%}
-.hsv:nth-child(3){left:39.1%}
-.hsv:nth-child(4){left:52.9%}
+.hsv{position:absolute;top:88.1%;transform:translateY(-50%);display:block}
+.hsv:nth-child(1){left:9%}
+.hsv:nth-child(2){left:24.5%}
+.hsv:nth-child(3){left:39.2%}
+.hsv:nth-child(4){left:53.1%}
 .hsv img{display:none}
 .hsv span{display:block;font-family:'Nunito',var(--B);font-weight:700;font-size:1.08cqw;line-height:1.22;color:#1E3370;white-space:nowrap}
 .hero-tag{
@@ -159,8 +161,8 @@ nav{
 }
 .hero-content h1 span{color:var(--orange)}
 .hero-content p{
-  font-family:var(--B);font-size:clamp(.9rem,1.1vw,1.05rem);font-weight:300;
-  color:rgba(255,255,255,.85);line-height:1.7;
+  font-family:var(--B);font-size:clamp(.9rem,1.1vw,1.05rem);font-weight:400;
+  color:#fff;text-shadow:0 1px 10px rgba(8,20,60,.45);line-height:1.7;
   max-width:480px;margin:0 0 2rem
 }
 .hero-btns{display:flex;gap:.8rem;justify-content:flex-start;flex-wrap:wrap}
@@ -169,7 +171,7 @@ nav{
   .hero-tag{font-size:max(.62rem,.85cqw);margin-bottom:1cqw;gap:.7cqw}
   .hero-tag::before{width:2.2cqw}
   .hero-content h1{font-size:3.8cqw;margin-bottom:1cqw}
-  .hero-content p{font-size:max(.8rem,1cqw);line-height:1.55;max-width:31cqw;margin:0 0 1.4cqw}
+  .hero-content p{font-size:max(.85rem,1.05cqw);line-height:1.55;max-width:31cqw;margin:0 0 1.4cqw}
   .hero-btns .hbp,.hero-btns .hbg{font-size:max(.72rem,.9cqw);padding:.85cqw 1.5cqw}
 }
 .hbp{
@@ -524,7 +526,7 @@ footer{
   .hsv img{display:block;width:34px;height:34px;flex-shrink:0}
   .hsv span{font-size:.92rem}
   .hero-content{position:relative;left:auto;top:auto;width:100%}
-  .hero-photo{position:relative;inset:auto;display:block;aspect-ratio:1701/576}
+  .hero-photo{position:relative;inset:auto;display:block;aspect-ratio:1700/575}
   .hero-photo img{object-position:center}
   .hero-photo::after{
     content:'';position:absolute;left:0;right:0;bottom:0;height:50%;
@@ -586,7 +588,6 @@ footer{
 <nav>
   <div class="nav-top">
     <div class="nlogo">
-      <div class="nlogo-badge">Électricité générale</div>
       <span class="nlogo-name">Danjou <span style="color:var(--orange);margin:0 .1em">&</span> Fils<span class="sarl-tag">SARL</span></span>
     </div>
     <div class="nav-tag"><span style="white-space:nowrap">Gainneville — Seine-Maritime</span><span class="hero-tag-br"> — </span><span style="white-space:nowrap">Depuis 2000</span></div>
@@ -604,6 +605,7 @@ footer{
     <a class="nav-link active" href="#" onclick="show('accueil',this)">Accueil</a>
     <a class="nav-link" href="#" onclick="show('services',this)">Électricité générale</a>
     <a class="nav-link" href="#" onclick="show('industriel',this)">Bâtiment industriel & tertiaire</a>
+    <a class="nav-link" href="#" onclick="goAbout(this);return false">À propos</a>
     <a class="nav-link" href="#" onclick="show('contact',this)">Contact</a>
     <button class="nav-cta" onclick="showAndScroll('contact','contact-form')">Devis gratuit</button>
   </div>
@@ -686,7 +688,7 @@ footer{
   </section>
 
   <!-- ABOUT STRIP -->
-  <div class="about-strip">
+  <div class="about-strip" id="apropos">
     <div class="about-strip-text section-blue2 rv">
       <div class="s-label">L'entreprise</div>
       <div class="s-title">Plus de 25 ans à votre service</div>
@@ -967,10 +969,15 @@ function showAndScroll(id, targetId){
   setTimeout(()=>{
     const el=document.getElementById(targetId);
     if(el){
-      const offset=el.getBoundingClientRect().top+window.scrollY-100;
+      const offset=el.getBoundingClientRect().top+window.scrollY-110;
       window.scrollTo({top:offset,behavior:'smooth'});
     }
   },120);
+}
+
+function goAbout(el){
+  showAndScroll('accueil','apropos');
+  setTimeout(()=>el.classList.add('active'),140);
 }
 
 function show(id, linkEl){
