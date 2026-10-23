@@ -101,15 +101,15 @@ nav{
 /* ─── HERO ─── */
 #hero-section{
   position:relative;
-  height:min(calc(100vh - 96px),calc(41vw + 100px));min-height:520px;
+  height:calc(41vw + 190px);min-height:600px;
   display:flex;flex-direction:column;
   background:var(--blue3);overflow:hidden
 }
 .hero-main{
   position:relative;flex:1;min-height:0;
-  display:flex;align-items:center;overflow:hidden
+  display:flex;flex-direction:column;align-items:flex-start;overflow:hidden
 }
-.hero-photo{position:absolute;inset:0;display:block}
+.hero-photo{position:absolute;top:0;left:0;right:0;display:block;aspect-ratio:1920/784;-webkit-mask-image:linear-gradient(to bottom,#000 86%,transparent 100%);mask-image:linear-gradient(to bottom,#000 86%,transparent 100%)}
 .hero-photo img{
   width:100%;height:100%;display:block;
   object-fit:cover;object-position:100% 75%
@@ -122,8 +122,25 @@ nav{
 .hero-content{
   position:relative;z-index:2;
   text-align:left;padding:0 0 0 6%;
-  width:34%
+  width:34%;margin:auto 0
 }
+/* ─── courbes décoratives (coins haut gauche et bas droite) ─── */
+.hero-swoosh{position:absolute;z-index:1;pointer-events:none;width:clamp(150px,14vw,270px);height:auto}
+.hero-swoosh.tl{top:0;left:0}
+.hero-swoosh.br{bottom:0;right:0;transform:rotate(180deg)}
+/* ─── bandeau blanc des 4 domaines ─── */
+.hero-services{
+  position:relative;z-index:3;flex-shrink:0;
+  width:60%;max-width:880px;margin:0 0 1.4rem 4%;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:#fff;border-radius:10px;
+  box-shadow:0 8px 24px rgba(10,20,60,.28);
+  padding:.9rem .4rem
+}
+.hsv{display:flex;align-items:center;justify-content:center;gap:.65rem;padding:0 .6rem;border-left:1px solid #D5DAE6}
+.hsv:first-child{border-left:0}
+.hsv svg{width:30px;height:30px;flex-shrink:0;stroke:var(--blue2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.hsv span{font-family:var(--B);font-weight:600;font-size:clamp(.68rem,.82vw,.84rem);line-height:1.25;color:var(--blue3)}
 .hero-tag{
   display:inline-flex;align-items:center;gap:.8rem;
   font-family:var(--H);font-size:clamp(.68rem,.9vw,.9rem);font-weight:600;
@@ -507,7 +524,13 @@ footer{
   /* HERO tablette + mobile : photo en bandeau, texte centré dessous */
   #hero-section{height:auto;min-height:0;display:block}
   .hero-main{display:block;overflow:visible}
-  .hero-photo{position:relative;inset:auto;display:block;aspect-ratio:1920/784}
+  .hero-swoosh.tl{width:clamp(140px,26vw,240px)}
+  .hero-swoosh.br{display:none}
+  .hero-services{width:auto;margin:0 6% 2rem;grid-template-columns:repeat(2,1fr);row-gap:.9rem;padding:1rem .4rem}
+  .hsv:nth-child(3){border-left:0}
+  .hsv span{font-size:.82rem}
+  .hero-content{margin:0}
+  .hero-photo{position:relative;inset:auto;display:block;aspect-ratio:1920/784;-webkit-mask-image:none;mask-image:none}
   .hero-photo img{object-position:center}
   .hero-photo::after{
     content:'';position:absolute;left:0;right:0;bottom:0;height:50%;
@@ -613,6 +636,8 @@ footer{
         <img src="camionnette-hero.jpg" alt="Camionnette Danjou &amp; Fils, électricien à Gainneville" fetchpriority="high">
       </picture>
       <div class="hero-bg"></div>
+      <svg class="hero-swoosh tl" viewBox="0 0 340 156" aria-hidden="true" focusable="false"><path d="M0,0 H300 C210,8 100,48 0,128 Z" fill="#3D5FA0"/><path d="M300,0 H328 C228,12 112,66 0,154 V128 C100,48 210,8 300,0 Z" fill="#E8471C"/></svg>
+      <svg class="hero-swoosh br" viewBox="0 0 340 156" aria-hidden="true" focusable="false"><path d="M0,0 H300 C210,8 100,48 0,128 Z" fill="#3D5FA0"/><path d="M300,0 H328 C228,12 112,66 0,154 V128 C100,48 210,8 300,0 Z" fill="#E8471C"/></svg>
       <div class="hero-content">
         <div class="hero-tag"><span style="white-space:nowrap">Gainneville — Seine-Maritime</span><span class="hero-tag-br"> — </span><span style="white-space:nowrap">Depuis 2000</span></div>
         <h1>Votre électricien<br><span>de confiance</span></h1>
@@ -621,6 +646,12 @@ footer{
           <a class="hbp" href="#" onclick="showAndScroll('contact','contact-form')">Devis gratuit</a>
           <a class="hbg" href="#" onclick="show('services',null)">Nos services</a>
         </div>
+      </div>
+      <div class="hero-services">
+        <div class="hsv"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M13 7l-4 6h4l-2 4 4-6h-4z"/></svg><span>Installation<br>électrique</span></div>
+        <div class="hsv"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 21V4h9v17M14 9h5v12M3 21h18M8 8h3M8 12h3M8 16h3"/></svg><span>Bâtiment<br>tertiaire</span></div>
+        <div class="hsv"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21V10l6 3V10l6 3V6h3v15zM3 21h18M7 17h2M12 17h2"/></svg><span>Industrie</span></div>
+        <div class="hsv"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 6.5a4 4 0 0 0 4.9 4.9L21 13l-8 8-3-3 8-8M14.5 6.5l-2 2M3 21l5-5"/></svg><span>Dépannage<br>et maintenance</span></div>
       </div>
     </div>
     <div class="hero-stats">
