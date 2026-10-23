@@ -93,6 +93,22 @@ nav{
   transition:background .2s;white-space:nowrap
 }
 .nav-cta:hover{background:var(--orange2)}
+.nav-tag{
+  flex:1;text-align:center;padding:0 1rem;
+  font-family:var(--H);font-size:.88rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.8)
+}
+@media(max-width:1050px){.nav-tag{display:none}}
+@media(min-width:1051px){.hero-tag{display:none!important}}
+/* bandeau des menus en blanc (ordinateur et tablette) ; sur mobile le menu déroulant reste bleu */
+@media(min-width:681px){
+  .nav-bottom{background:#fff}
+  .nav-link{color:rgba(30,51,112,.7)}
+  .nav-link:hover{color:var(--blue3);border-bottom-color:rgba(30,51,112,.35)}
+  .nav-link.active{color:var(--blue3);border-bottom-color:var(--orange)}
+  .nav-cta{display:none}
+}
 
 /* ─── PAGES ─── */
 .page{display:none;padding-top:96px;min-height:100vh}
@@ -115,7 +131,7 @@ nav{
 /* le dégradé bleu, les courbes et le ruban blanc font partie de la photo */
 .hero-bg{display:none}
 .hero-content{
-  position:absolute;z-index:2;left:5%;top:5.8cqw;width:36cqw
+  position:absolute;z-index:2;left:5%;top:8.5cqw;width:36cqw
 }
 /* textes posés sur le ruban blanc de la photo (desktop) */
 .hero-services{position:absolute;inset:0;z-index:2;pointer-events:none}
@@ -603,6 +619,7 @@ footer{
       <div class="nlogo-badge">Électricité générale</div>
       <span class="nlogo-name">Danjou <span style="color:var(--orange);margin:0 .1em">&</span> Fils<span class="sarl-tag">SARL</span></span>
     </div>
+    <div class="nav-tag"><span style="white-space:nowrap">Gainneville — Seine-Maritime</span><span class="hero-tag-br"> — </span><span style="white-space:nowrap">Depuis 2000</span></div>
     <div style="display:flex;align-items:center;gap:.5rem">
       <a href="tel:0235454326" class="nav-phone">
         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.62-.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
@@ -629,7 +646,7 @@ footer{
   <section id="hero-section">
     <div class="hero-main">
       <picture class="hero-photo">
-        <source media="(max-width:680px)" srcset="camionnette-hero-mobile.jpg">
+        <source media="(max-width:1100px)" srcset="camionnette-hero-mobile.jpg">
         <img src="camionnette-hero.jpg" alt="Camionnette Danjou &amp; Fils, électricien à Gainneville" fetchpriority="high">
       </picture>
       <div class="hero-bg"></div>
