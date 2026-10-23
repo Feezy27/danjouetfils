@@ -100,49 +100,53 @@ nav{
 
 /* ─── HERO ─── */
 #hero-section{
-  position:relative;height:calc(100vh - 96px);min-height:520px;
-  overflow:hidden;display:flex;align-items:center;justify-content:center;
-  background:var(--blue3)
+  position:relative;
+  height:min(calc(100vh - 96px),calc(41vw + 100px));min-height:520px;
+  display:flex;flex-direction:column;
+  background:var(--blue3);overflow:hidden
 }
+.hero-main{
+  position:relative;flex:1;min-height:0;
+  display:flex;align-items:center;overflow:hidden
+}
+.hero-photo{position:absolute;inset:0;display:block}
+.hero-photo img{
+  width:100%;height:100%;display:block;
+  object-fit:cover;object-position:100% 75%
+}
+/* voile bleu à gauche pour la lisibilité du texte, la camionnette reste intacte à droite */
 .hero-bg{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(135deg, rgba(30,51,112,.92) 40%, rgba(232,71,28,.15) 100%);
-  z-index:1
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(14,32,84,.92) 0%,rgba(20,42,100,.72) 32%,rgba(20,42,100,0) 60%)
 }
-.hero-photo{
-  position:absolute;inset:0;
-  background:var(--blue2);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--H);font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue)
-}
-.hero-photo img{width:100%;height:100%;object-fit:cover;opacity:.5}
 .hero-content{
   position:relative;z-index:2;
-  text-align:center;padding:0 6%;max-width:900px;
-  margin-bottom:4rem
+  text-align:left;padding:0 0 0 6%;
+  width:34%
 }
 .hero-tag{
   display:inline-flex;align-items:center;gap:.8rem;
-  font-family:var(--H);font-size:.95rem;font-weight:600;
-  letter-spacing:.25em;text-transform:uppercase;
-  color:rgba(255,255,255,.6);margin-bottom:1.8rem;
-  margin-top:-3rem
+  font-family:var(--H);font-size:clamp(.68rem,.9vw,.9rem);font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;
+  color:rgba(255,255,255,.75);margin-bottom:1.6rem
 }
-.hero-tag::before,.hero-tag::after{content:'';width:30px;height:1px;background:var(--orange)}
+.hero-tag::before{content:'';width:30px;height:2px;background:var(--orange)}
+.hero-tag::after{display:none}
 .hero-content h1{
   font-family:var(--H);font-weight:900;
-  font-size:clamp(2.8rem,7vw,6.5rem);
-  line-height:.9;text-transform:uppercase;letter-spacing:.01em;
-  color:var(--white);margin-bottom:1.5rem
+  font-size:clamp(2.8rem,5.4vw,5.8rem);
+  line-height:.92;text-transform:uppercase;letter-spacing:.01em;
+  color:var(--white);margin-bottom:1.4rem;
+  text-shadow:0 2px 24px rgba(0,0,0,.25)
 }
 .hero-content h1 span{color:var(--orange)}
 .hero-content p{
-  font-family:var(--B);font-size:1.05rem;font-weight:300;
-  color:rgba(255,255,255,.7);line-height:1.75;
-  max-width:580px;margin:0 auto 2.5rem
+  font-family:var(--B);font-size:clamp(.9rem,1.1vw,1.05rem);font-weight:300;
+  color:rgba(255,255,255,.85);line-height:1.7;
+  max-width:480px;margin:0 0 2rem
 }
-.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-btns{display:flex;gap:.8rem;justify-content:flex-start;flex-wrap:wrap}
+.hero-btns .hbp,.hero-btns .hbg{padding:.9rem 1.6rem}
 .hbp{
   font-family:var(--H);font-weight:700;font-size:.95rem;
   letter-spacing:.12em;text-transform:uppercase;
@@ -162,7 +166,7 @@ nav{
 .hbg:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
 
 .hero-stats{
-  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  position:relative;z-index:2;flex-shrink:0;
   display:grid;grid-template-columns:repeat(5,1fr);
   background:rgba(0,0,0,.45);backdrop-filter:blur(8px);
   border-top:1px solid var(--line)
@@ -499,6 +503,25 @@ footer{
   .footer-grid{grid-template-columns:1fr 1fr}
   .indus-grid{grid-template-columns:1fr}
 }
+@media(max-width:1100px){
+  /* HERO tablette + mobile : photo en bandeau, texte centré dessous */
+  #hero-section{height:auto;min-height:0;display:block}
+  .hero-main{display:block;overflow:visible}
+  .hero-photo{position:relative;inset:auto;display:block;aspect-ratio:1920/784}
+  .hero-photo img{object-position:center}
+  .hero-photo::after{
+    content:'';position:absolute;left:0;right:0;bottom:0;height:50%;
+    background:linear-gradient(to bottom,rgba(30,51,112,0),var(--blue3))
+  }
+  .hero-bg{display:none}
+  .hero-content{width:100%;padding:0 6% 2.5rem;margin-top:-2rem;text-align:center}
+  .hero-tag{display:block;text-align:center;font-size:.8rem;letter-spacing:.15em;margin-bottom:1.2rem}
+  .hero-tag::before,.hero-tag::after{display:none}
+  .hero-content h1{font-size:clamp(3rem,8vw,5rem)}
+  .hero-content p{margin:0 auto 1.8rem;font-size:1rem;max-width:560px}
+  .hero-btns{justify-content:center}
+  .hero-btns .hbp,.hero-btns .hbg{padding:.9rem 2rem}
+}
 @media(max-width:680px){
   /* NAV */
   nav{position:fixed}
@@ -522,36 +545,14 @@ footer{
   /* PAGE */
   .page{padding-top:56px}
 
-  /* HERO — structure flex colonne sur mobile */
-  #hero-section{
-    height:auto;min-height:0;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-items:stretch
-  }
-  .hero-bg{position:absolute}
-  .hero-content{
-    padding:4rem 5% 2rem;
-    text-align:center;
-    margin-bottom:0;
-    width:100%
-  }
-  .hero-tag{
-    font-size:.63rem;
-    margin-bottom:1.2rem;
-    text-align:center;
-    display:block;
-    letter-spacing:.08em;
-    white-space:nowrap;
-    line-height:1.8
-  }
-  .hero-tag::before,.hero-tag::after{display:none}
+  /* HERO mobile : ajustements propres au téléphone */
+  .hero-photo{aspect-ratio:900/483}
+  .hero-content{padding:0 5% 2rem;margin-top:-1.2rem}
+  .hero-tag{font-size:.63rem;letter-spacing:.08em}
   .hero-content h1{font-size:clamp(2.8rem,12vw,4.5rem)}
-  .hero-content p{font-size:.88rem;margin-bottom:1.5rem}
-  .hero-btns{
-    flex-direction:column;align-items:center;gap:.8rem;margin-bottom:0
-  }
-  .hbp,.hbg{width:100%;text-align:center;padding:.85rem 1rem}
+  .hero-content p{font-size:.88rem;margin:0 auto 1.5rem}
+  .hero-btns{flex-direction:column;align-items:center;gap:.8rem;margin-bottom:0}
+  .hbp,.hbg,.hero-btns .hbp,.hero-btns .hbg{width:100%;text-align:center;padding:.85rem 1rem}
 
   /* STATS — sortir du position:absolute, redevenir bloc normal */
   .hero-stats{
@@ -606,18 +607,20 @@ footer{
 
   <!-- HERO -->
   <section id="hero-section">
-    <div class="hero-photo">
-      <!-- <img src="votre-camionnette.jpg" alt="Danjou & Fils"> -->
-      Photo principale (camionnette ou chantier)
-    </div>
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <div class="hero-tag"><span style="white-space:nowrap">Gainneville — Seine-Maritime</span><span class="hero-tag-br"> — </span><span style="white-space:nowrap">Depuis 2000</span></div>
-      <h1>Votre électricien<br><span>de confiance</span></h1>
-      <p>Particuliers, entreprises et industries — installation, rénovation et dépannage électrique sur Le Havre et ses environs depuis plus de 25 ans.</p>
-      <div class="hero-btns">
-        <a class="hbp" href="#" onclick="showAndScroll('contact','contact-form')">Devis gratuit</a>
-        <a class="hbg" href="#" onclick="show('services',null)">Nos services</a>
+    <div class="hero-main">
+      <picture class="hero-photo">
+        <source media="(max-width:680px)" srcset="camionnette-hero-mobile.jpg">
+        <img src="camionnette-hero.jpg" alt="Camionnette Danjou &amp; Fils, électricien à Gainneville" fetchpriority="high">
+      </picture>
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-tag"><span style="white-space:nowrap">Gainneville — Seine-Maritime</span><span class="hero-tag-br"> — </span><span style="white-space:nowrap">Depuis 2000</span></div>
+        <h1>Votre électricien<br><span>de confiance</span></h1>
+        <p>Particuliers, entreprises et industries — installation, rénovation et dépannage électrique sur Le Havre et ses environs depuis plus de 25 ans.</p>
+        <div class="hero-btns">
+          <a class="hbp" href="#" onclick="showAndScroll('contact','contact-form')">Devis gratuit</a>
+          <a class="hbg" href="#" onclick="show('services',null)">Nos services</a>
+        </div>
       </div>
     </div>
     <div class="hero-stats">
