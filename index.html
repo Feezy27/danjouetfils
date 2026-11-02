@@ -182,7 +182,7 @@ nav{
 .nlogo{
   font-family:var(--H);font-weight:900;font-size:1.7rem;
   letter-spacing:.06em;text-transform:uppercase;color:var(--white);
-  display:flex;align-items:center;gap:.6rem
+  display:flex;align-items:center;gap:.6rem;text-decoration:none;cursor:pointer
 }
 .nlogo-name{display:flex;align-items:baseline;gap:.25em}
 .sarl-tag{font-size:.7rem;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.08em;margin-left:.1em}
@@ -744,9 +744,9 @@ footer{
 <nav>
   <div class="nav-backdrop" id="navBackdrop" onclick="toggleMenu()"></div>
   <div class="nav-top">
-    <div class="nlogo">
+    <a class="nlogo" href="./" onclick="goHome();return false" aria-label="Danjou et Fils, retour à l'accueil">
       <span class="nlogo-name">Danjou <span style="color:var(--orange);margin:0 .1em">&</span> Fils<span class="sarl-tag">SARL</span></span>
-    </div>
+    </a>
     <div class="nav-tag"><span style="white-space:nowrap">Gainneville — Seine-Maritime</span><span class="hero-tag-br"> — </span><span style="white-space:nowrap">Depuis 2000</span></div>
     <div style="display:flex;align-items:center;gap:.5rem">
       <a href="tel:0235454326" class="nav-phone">
@@ -1131,6 +1131,10 @@ function showAndScroll(id, targetId){
   document.querySelectorAll('.yrs5').forEach(function(e){e.textContent=n});
   document.querySelectorAll('.yr-now').forEach(function(e){e.textContent=new Date().getFullYear()});
 })();
+
+function goHome(){
+  show('accueil',document.querySelector('.nav-bottom .nav-link'));
+}
 
 function goAbout(el){
   showAndScroll('accueil','apropos');
