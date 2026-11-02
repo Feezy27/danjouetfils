@@ -680,14 +680,14 @@ footer{
   .hsv img{display:block;width:34px;height:34px;flex-shrink:0}
   .hsv span{font-size:.92rem}
   .hero-content{position:relative;left:auto;top:auto;width:100%}
-  .hero-photo{position:relative;inset:auto;display:block;aspect-ratio:1700/575}
+  .hero-photo{position:relative;inset:auto;display:block;aspect-ratio:1400/495}
   .hero-photo img{object-position:center}
   .hero-photo::after{
-    content:'';position:absolute;left:0;right:0;bottom:0;height:50%;
+    content:'';position:absolute;left:0;right:0;bottom:0;height:12%;
     background:linear-gradient(to bottom,rgba(30,51,112,0),var(--blue3))
   }
   .hero-bg{display:none}
-  .hero-content{width:100%;padding:0 6% 2.5rem;margin-top:-2rem;text-align:center}
+  .hero-content{width:100%;padding:1rem 6% 2.5rem;margin-top:0;text-align:center}
   .hero-tag{display:block;text-align:center;font-size:.8rem;letter-spacing:.15em;margin-bottom:1.2rem}
   .hero-tag::before,.hero-tag::after{display:none}
   .hero-content h1{font-size:clamp(3rem,8vw,5rem)}
@@ -721,7 +721,7 @@ footer{
   .page{padding-top:56px}
 
   /* HERO mobile : ajustements propres au téléphone */
-  .hero-content{padding:0 5% 2rem;margin-top:-1.2rem}
+  .hero-content{padding:.9rem 5% 2rem;margin-top:0}
   .hero-tag{font-size:.63rem;letter-spacing:.08em}
   .hero-content h1{font-size:clamp(1.9rem,9.6vw,4rem)}
   .hero-content p{font-size:.88rem;margin:0 auto 1.5rem}
@@ -775,7 +775,7 @@ footer{
   <section id="hero-section">
     <div class="hero-main">
       <picture class="hero-photo">
-        <source media="(max-width:1100px)" srcset="camionnette-hero-mobile.jpg" width="1700" height="575">
+        <source media="(max-width:1100px)" srcset="camionnette-hero-mobile.jpg" width="1400" height="495">
         <img src="camionnette-hero.jpg" width="2097" height="742" alt="Camionnette de la SARL Danjou et Fils, électricien à Gainneville près du Havre" fetchpriority="high">
       </picture>
       <div class="hero-bg"></div>
