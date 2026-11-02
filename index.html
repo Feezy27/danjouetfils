@@ -227,7 +227,8 @@ nav{
   transition:background .2s;white-space:nowrap
 }
 .nav-cta:hover{background:var(--orange2)}
-.nav-top{position:relative}
+.nav-top{position:relative;z-index:2;background:var(--blue)}
+.nav-backdrop{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(6,12,30,.72);z-index:1}
 .nav-tag{
   position:absolute;left:50%;top:0;height:100%;transform:translateX(-50%);
   display:flex;align-items:center;gap:.55em;white-space:nowrap;pointer-events:none;
@@ -703,10 +704,12 @@ footer{
   .nlogo .sarl-tag{display:block;font-size:.6rem;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.08em;line-height:1;margin-top:-2px}
   .nav-phone{font-size:1rem;white-space:nowrap;gap:.3rem}
   .nav-phone svg{width:15px;height:15px}
-  .nav-bottom{display:none;flex-direction:column;gap:0;padding:0;height:auto;position:absolute;top:100%;left:0;right:0;background:var(--blue2);border-top:1px solid rgba(255,255,255,.1);z-index:300}
+  .nav-bottom{display:none;flex-direction:column;gap:0;padding:.4rem 0 0;height:auto;position:absolute;top:100%;left:0;right:0;background:var(--blue3);border-top:3px solid var(--orange);box-shadow:0 22px 40px rgba(0,0,0,.5);z-index:300}
   .nav-bottom.open{display:flex}
-  .nav-link{height:48px;padding:0 5%;border-bottom:1px solid rgba(255,255,255,.07);border-left:3px solid transparent}
-  .nav-link.active{border-left-color:var(--orange)}
+  .nav-backdrop.open{display:block}
+  .nav-link{height:54px;width:100%;justify-content:flex-start;padding:0 6%;font-size:1.1rem;color:#fff;border-bottom:1px solid rgba(255,255,255,.12);border-left:4px solid transparent}
+  .nav-link:hover{background:rgba(255,255,255,.06)}
+  .nav-link.active{border-left-color:var(--orange);background:rgba(255,255,255,.1);border-bottom-color:rgba(255,255,255,.12)}
   .nav-cta{margin:1rem 5%;width:calc(100% - 10%);text-align:center;padding:.85rem}
   .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;margin-left:.3rem}
   .burger span{display:block;width:22px;height:2px;background:var(--white);transition:all .3s}
@@ -739,6 +742,7 @@ footer{
 
 <!-- NAV -->
 <nav>
+  <div class="nav-backdrop" id="navBackdrop" onclick="toggleMenu()"></div>
   <div class="nav-top">
     <div class="nlogo">
       <span class="nlogo-name">Danjou <span style="color:var(--orange);margin:0 .1em">&</span> Fils<span class="sarl-tag">SARL</span></span>
@@ -1098,6 +1102,7 @@ function toggleMenu(){
   const navBottom=document.querySelector('.nav-bottom');
   burger.classList.toggle('open');
   navBottom.classList.toggle('open');
+  document.getElementById('navBackdrop').classList.toggle('open');
 }
 // Afficher le burger sur mobile
 if(window.innerWidth<=680){
@@ -1106,7 +1111,7 @@ if(window.innerWidth<=680){
 window.addEventListener('resize',()=>{
   const burger=document.getElementById('burger');
   if(window.innerWidth<=680) burger.style.display='flex';
-  else{ burger.style.display='none'; document.querySelector('.nav-bottom').classList.remove('open'); }
+  else{ burger.style.display='none'; document.querySelector('.nav-bottom').classList.remove('open'); document.getElementById('navBackdrop').classList.remove('open'); }
 });
 
 function showAndScroll(id, targetId){
@@ -1148,6 +1153,7 @@ function show(id, linkEl){
   // fermer menu mobile
   document.querySelector('.nav-bottom').classList.remove('open');
   document.getElementById('burger').classList.remove('open');
+  document.getElementById('navBackdrop').classList.remove('open');
   window.scrollTo({top:0,behavior:'smooth'});
   setTimeout(()=>{
     document.querySelectorAll('#'+id+' .rv').forEach(el=>el.classList.add('on'));
